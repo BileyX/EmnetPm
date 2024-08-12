@@ -2465,8 +2465,6 @@ textarea.form-control {
 /* End */
 
 
-
-
 /* Team */
 .about-content{
   color: antiquewhite;
@@ -2540,8 +2538,22 @@ textarea.form-control {
 }
 /* END */
 
-/* END */
-
+/* Services */
+.more {
+  display: none;
+}
+.read-more, .read-less {
+  color: black; /* Gold color */
+  cursor: pointer;
+  font-weight: bold;
+}
+.read-less{
+  margin-top: 3rem;
+  background-color: #ffc107;
+  border-color: #090a0c;
+  border-radius: 15px;
+}
+/* End */
 
 /* End */
 /* Changes */
