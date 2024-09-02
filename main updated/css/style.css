@@ -2503,6 +2503,10 @@ textarea.form-control {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.rounded-circle{
+  border-radius: 75px;
+}
+
 .team-member img {
   width: 150px;
   height: 150px;
@@ -2553,6 +2557,23 @@ textarea.form-control {
   border-color: #090a0c;
   border-radius: 15px;
 }
+
+
+/* For smaller devices */
+@media (max-width: 768px) {
+  .read-more-container {
+    position: relative;
+    top: 350px;
+  }
+  #hide{
+    display: unset;
+  }
+}
+
+#hide{
+  display: none;
+}
+
 /* End */
 
 /* End */
@@ -2566,9 +2587,9 @@ textarea.form-control {
   padding-top: 8rem;
 } */
 
-/* #properties-main{
+#properties-main{
   padding-top: 5rem;
-} */
+}
 
 /* #about-section{
   height: 83vh;
