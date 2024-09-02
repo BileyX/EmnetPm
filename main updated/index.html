@@ -107,7 +107,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="oi oi-menu"></span> Menu
+          <span id="hide" class="oi oi-menu"></span> Menu
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
@@ -214,7 +214,9 @@
                     </ul>
                   </span>
                 </p>
-                <button class="read-less" onclick="toggleReadMore()">Read More</button>
+                <div class="col-md-12 text-center read-more-container">
+                  <button class="read-less" onclick="toggleReadMore()">Read More</button>
+                </div>
               </div>
             </div>
           </div>
@@ -337,6 +339,13 @@
             <h2 class="mb-3 white">Our Experts</h2>
           </div>
         </div>
+        <div class = "col-md-8">
+          <div class="team-content">
+            <p>
+              Emnet Property Management PLC have put a capable team in the ground with strong ethics, expertise, and professionalism.
+            </p>
+          </div>
+        </div>
         <div class="row">
           <!-- Team Member 1 -->
           <div class="col-md-4 col-lg-3 mb-4">
@@ -352,17 +361,17 @@
             <div class="team-member text-center">
               <img src="images/user3.png" alt="Team Member 2" class="img-fluid rounded-circle mb-3">
               <h4 class="name">Solina Teklu</h4>
-              <p class="position">CFO</p>
-              <p class="description">Solina oversees our financial operations and ensures everything runs smoothly.</p>
+              <p class="position">Leasing and Operations Manager</p>
+              <p class="description">Solina ensures smooth leasing and operations, maintaining tenant satisfaction with her attention to detail.</p>
             </div>
           </div>
           <!-- Team Member 3 -->
           <div class="col-md-4 col-lg-3 mb-4">
             <div class="team-member text-center">
-              <img src="images/user3.png" alt="Team Member 3" class="img-fluid rounded-circle mb-3">
-              <h4 class="name">Bereket Simon</h4>
-              <p class="position">Operations Manager</p>
-              <p class="description">Bereket manages day-to-day operations and ensures our services meet high standards.</p>
+              <img src="images/Yitbarek.jpg" alt="Team Member 3" class="img-fluid rounded-circle mb-3">
+              <h4 class="name">Yitbarek Tekle</h4>
+              <p class="position">Maintenance supervisor</p>
+              <p class="description">Yitbarek keeps our properties in top shape, ensuring a safe and well-maintained environment for tenants.</p>
             </div>
           </div>
           <!-- Team Member 4 -->
