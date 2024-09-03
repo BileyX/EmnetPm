@@ -766,6 +766,7 @@ fieldset:disabled a.btn {
   display: block; }
 
 .nav {
+  
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1591,8 +1592,8 @@ button.bg-dark:focus {
     min-width: 992px !important; }
   .container {
     min-width: 992px !important; }
-  .navbar {
-    display: none; }
+  /* .navbar {
+    /* display: none;} change*/
   .table {
     border-collapse: collapse !important; }
     .table td,
@@ -1627,9 +1628,10 @@ h1, h2, h3, h4,
   max-width: 1250px; }
 
 .ftco-navbar-light {
-  background: transparent !important;
+  /* background: transparent !important; */
+  color: #1a1919;
   position: absolute;
-  top: 20px;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 3; }
@@ -1649,7 +1651,7 @@ h1, h2, h3, h4,
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 10px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-    font-size: 15px;
+    font-size: 17px;
     padding-top: .9rem;
     padding-bottom: .9rem;
     padding-left: 20px;
@@ -2426,16 +2428,9 @@ textarea.form-control {
 
 .about-author .desc h3 {
   font-size: 24px; }
+/* changes */
 
-/* About */
-
-/* @media (max-width: 768px) {
-  .about-content {
-    padding: 15px;
-  }
-}  */
-
-/* End */
+/* fixing the colors */
 .ftco-section{
   background-color: #1a1919;
   color: #fff;
@@ -2453,17 +2448,16 @@ textarea.form-control {
   background-color: #090a0c;
 }
 
-/* input{
-  background-color: #090a0c;
-} */
+#ftco-navbar{
+  color: #1a1919;
+  
+}
+
 /* Service */
 .rows{
   display: flex;
   justify-content: space-between;
 }
-
-/* End */
-
 
 /* Team */
 .about-content{
@@ -2540,14 +2534,14 @@ textarea.form-control {
     padding: 15px;
   }
 }
-/* END */
+
 
 /* Services */
 .more {
   display: none;
 }
 .read-more, .read-less {
-  color: black; /* Gold color */
+  color: black; 
   cursor: pointer;
   font-weight: bold;
 }
@@ -2558,13 +2552,16 @@ textarea.form-control {
   border-radius: 15px;
 }
 
+.adjust{
+  margin-top: 8.3rem;
+}
+.adjust2{
+  margin-top: 6.5rem;
+}
+
 
 /* For smaller devices */
 @media (max-width: 768px) {
-  .read-more-container {
-    position: relative;
-    top: 350px;
-  }
   #hide{
     display: unset;
   }
@@ -2574,26 +2571,16 @@ textarea.form-control {
   display: none;
 }
 
-/* End */
-
-/* End */
-/* Changes */
+/* some height adjustements */
 
 .foot{
   background-color: #090a0c;
 }
 
-/* #Testimonial-main{
-  padding-top: 8rem;
-} */
 
 #properties-main{
   padding-top: 5rem;
 }
-
-/* #about-section{
-  height: 83vh;
-} */
 
 .enclose{
   padding-top: 3rem;
@@ -2607,21 +2594,12 @@ textarea.form-control {
   max-height: 83vh;
 }
 
-/* .pr-md-5{
-  height: 83vh;
-} */
 
 .ch{
   margin-top: -4rem;
   margin-left: 7rem;
 }
 
-/* #contact-main{
-  height: 75vh;
-  padding-top: 8rem;
-  padding-bottom: 55rem;
-  margin-bottom: 5rem;
-} */
 
 .col-md-12{
   margin-top: 2rem;
@@ -2737,7 +2715,7 @@ textarea.form-control {
     width: 50px;
     height: 1px;
     margin-top: -1px;
-    background: #24A148; }
+    background: #ffc107 }
   .heading-section .subheading:before {
     position: absolute;
     top: 50%;
@@ -2749,7 +2727,7 @@ textarea.form-control {
     width: 50px;
     height: 1px;
     margin-top: -1px;
-    background: #24A148; }
+    background: #ffc107; }
 
 .heading-section h2 {
   font-size: 40px;
