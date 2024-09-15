@@ -4,6 +4,10 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+ /* @import "https://unpkg.com/open-props";
+ @import "https://unpkg.com/open-props/normalize.min.css"; */
+
  :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -41,6 +45,7 @@
   box-sizing: border-box; }
 
 html {
+  scroll-behavior: smooth;
   font-family: sans-serif;
   line-height: 1.15;
   scroll-behavior: smooth;
@@ -1601,6 +1606,7 @@ button.bg-dark:focus {
       background-color: #fff !important; } }
 
 body {
+  scroll-behavior: smooth;
   font-family: "Nunito Sans", Arial, sans-serif;
   background: #fff;
   font-size: 16px;
@@ -2475,18 +2481,21 @@ textarea.form-control {
 
 .heading-section .subheading {
   font-size: 18px;
-  color: antiquewhite;; /* Dark color for contrast */
+  color: antiquewhite; 
   margin-bottom: 10px;
 }
 
 .heading-section h2 {
   font-size: 36px;
-  color: antiquewhite;; /* Dark color for heading */
+  color: antiquewhite;
 }
 
 .team-member {
-  background: #1a1919; /* White background for each team member card */
+  background: #1a1919; 
   padding: 20px;
+  margin-bottom: 1rem;
+  min-width: 250px;
+  height: fit-content;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -2504,7 +2513,7 @@ textarea.form-control {
 .team-member img {
   width: 150px;
   height: 150px;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .team-member .name {
@@ -2534,6 +2543,48 @@ textarea.form-control {
     padding: 15px;
   }
 }
+
+.media-scroll{
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.media-scroll::-webkit-scrollbar {
+  width: 1px;
+  height: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#0f101c, #ffc107);
+  border-radius: 10px;
+}
+
+@-moz-document url-prefix() {
+  .media-scroll {
+    scrollbar-width: 5px;
+    scrollbar-color: #c797088e #000000;
+  }
+
+  .media-scroll::-moz-scrollbar-track {
+    background: #000000;
+  }
+
+  .media-scroll::-moz-scrollbar-thumb {
+    background: #c797088e; 
+    border-radius: 10px;
+  }
+}
+
 
 
 /* Services */
@@ -2565,6 +2616,12 @@ textarea.form-control {
   #hide{
     display: unset;
   }
+  .adjust, .adjust2{
+    margin-top: 0 !important;
+  }
+  nav{
+    height: fit-content !important;
+  }
 }
 
 #hide{
@@ -2579,7 +2636,7 @@ textarea.form-control {
 
 
 #properties-main{
-  padding-top: 5rem;
+  padding-top: 4rem;
 }
 
 .enclose{
