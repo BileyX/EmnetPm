@@ -237,6 +237,48 @@
       </div>
     </section> -->
 
+    <section id="properties-main" class="ftco-section ftco-no-pt ss">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+            <span class="subheading white">current</span>
+            <h2 class="mb-2 white">Property Gallery</h2>
+          </div>
+        </div>
+    
+        <!-- Gallery primary -->
+        <div class="gallery-wrapper">
+          <img
+            id="primaryImage"
+            src="images/P.jpg"
+            alt="Property main view"
+            class="primary-image"
+          />
+        </div>
+    
+        <!-- Extra images (hidden until click) -->
+        <div id="extraImages" class="extra-images">
+          <img src="images/P2.jpg" alt="View 2" class="extra-image" />
+          <img src="images/P3.jpg" alt="View 3" class="extra-image" />
+          <img src="images/P4.jpg" alt="View 4" class="extra-image" />
+        </div>
+      </div>
+    </section>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const primary = document.getElementById('primaryImage');
+        const extras  = document.getElementById('extraImages');
+    
+        primary.addEventListener('click', () => {
+          extras.classList.toggle('show');
+        });
+      });
+    </script>
+    
+    
+    
+
     <section id="more-us" class="ftco-section bg-darken ss">
       <div class="container">
         <div class="row justify-content-center">

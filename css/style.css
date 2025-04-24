@@ -46,6 +46,7 @@ figcaption, footer, header, main, nav, section {
   display: block; }
 
 body {
+  overflow-x: hidden;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
@@ -1932,3 +1933,48 @@ a {
 }
 
 
+/* ====== PROPERTY GALLERY ====== */
+
+/* wrapper for primary image */
+.gallery-wrapper {
+  width: 50vw;           /* 50% of viewport width */
+  height: 50vh;          /* 50% of viewport height */
+  margin: 0 auto;        /* center horizontally */
+  overflow: hidden;      /* crop any overflow */
+}
+
+/* primary image fills its wrapper */
+.primary-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* maintain aspect, crop if needed */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.primary-image:hover {
+  transform: scale(1.05);
+}
+
+/* extras container: hidden by default */
+.extra-images {
+  display: none;
+  width: 90vw;        /* exactly the viewport width */
+  margin: 20px auto;   /* vertical gap, centered horizontally */
+  box-sizing: border-box;
+}
+
+/* when shown, flex-layout places first at start, last at end, middle in center */
+.extra-images.show {
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-start;
+}
+
+/* each of the three images is 30% of viewport; the two gaps auto-become 5vw each */
+.extra-image {
+  width: 28vw;         /* three × 30vw = 90vw, leaving 10vw for two gaps */
+  height: 50vh;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
