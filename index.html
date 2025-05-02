@@ -256,25 +256,30 @@
           />
         </div>
     
-        <!-- Extra images (hidden until click) -->
-        <div id="extraImages" class="extra-images">
-          <img src="images/P2.jpg" alt="View 2" class="extra-image" />
-          <img src="images/P3.jpg" alt="View 3" class="extra-image" />
-          <img src="images/P4.jpg" alt="View 4" class="extra-image" />
+        <!-- Toggle + extras wrapper -->
+        <div class="toggle-container">
+          <button id="toggleButton" class="toggle-button">Show More</button>
+          <div id="extraImages" class="extra-images">
+            <img src="images/P2.jpg" alt="View 2" class="extra-image" />
+            <img src="images/P3.jpg" alt="View 3" class="extra-image" />
+            <img src="images/P4.jpg" alt="View 4" class="extra-image" />
+          </div>
         </div>
       </div>
     </section>
     
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        const primary = document.getElementById('primaryImage');
-        const extras  = document.getElementById('extraImages');
+        const btn    = document.getElementById('toggleButton');
+        const extras = document.getElementById('extraImages');
     
-        primary.addEventListener('click', () => {
-          extras.classList.toggle('show');
+        btn.addEventListener('click', () => {
+          const showing = extras.classList.toggle('show');
+          btn.textContent = showing ? 'Show Less' : 'Show More';
         });
       });
     </script>
+    
     
     
     

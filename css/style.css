@@ -1933,22 +1933,23 @@ a {
 }
 
 
+
 /* ====== PROPERTY GALLERY ====== */
 
 /* wrapper for primary image */
 .gallery-wrapper {
-  width: 70vw;           /* 50% of viewport width */
-  height: 70vh;          /* 50% of viewport height */
-  margin: 0 auto;        /* center horizontally */
-  overflow: hidden;      /* crop any overflow */
+  width: 70vw;
+  height: 70vh;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-/* primary image fills its wrapper */
+/* primary image styling */
 .primary-image {
   width: 100%;
   height: 100%;
   border-radius: 4px;
-  object-fit: contain;     /* maintain aspect, crop if needed */
+  object-fit: contain;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -1956,26 +1957,84 @@ a {
   transform: scale(1.05);
 }
 
-/* extras container: hidden by default */
-.extra-images {
-  display: none;
-  width: 90vw;        /* exactly the viewport width */
-  margin: 20px auto;   /* vertical gap, centered horizontally */
-  box-sizing: border-box;
+/* toggle-container holds button + extras; default column layout */
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
 }
 
-/* when shown, flex-layout places first at start, last at end, middle in center */
+/* button styling (black bg, gold text/border) */
+/* ===== MODIFIED TOGGLE BUTTON ===== */
+.toggle-button {
+  background-color: #FFD700;    /* gold background */
+  color: #000;                  /* black text */
+  border: none;                 /* remove border */
+  padding: 0.25rem 0.75rem;     /* smaller button */
+  font-size: 0.875rem;          /* slightly smaller text */
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.toggle-button:hover {
+  background-color: #ffde33;    /* a bit lighter on hover */
+}
+
+/* ===== ALIGN BUTTON UNDER PRIMARY IMAGE ON LARGE SCREENS ===== */
+@media (min-width: 641px) {
+  .toggle-container {
+    /* match gallery-wrapper width and centering */
+    width: 30vw;
+    margin: 0.5rem auto;
+  }
+  .toggle-button {
+    align-self: flex-end;       /* push to the right edge of that 70vw */
+  }
+}
+
+
+/* extras container: hidden by default, with fade transition */
+.extra-images {
+  display: none;
+  opacity: 0;
+  margin-top: 1rem;
+  width: 90vw;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease;
+}
+
+/* when shown, flex-layout places items in a row */
 .extra-images.show {
   display: flex;
-  justify-content: space-between; 
+  opacity: 1;
+  justify-content: space-between;
   align-items: flex-start;
 }
 
-/* each of the three images is 30% of viewport; the two gaps auto-become 5vw each */
+/* each extra image */
 .extra-image {
-  width: 28vw;         /* three × 30vw = 90vw, leaving 10vw for two gaps */
+  width: 28vw;
   height: 50vh;
   object-fit: cover;
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
+
+/* ====== RESPONSIVE ====== */
+/* small screens: stack extras vertically and reverse order so images sit between primary + button */
+@media (max-width: 640px) {
+  .toggle-container {
+    flex-direction: column-reverse;
+  }
+  .extra-images.show {
+    flex-direction: column;
+    width: 100%;
+  }
+  .extra-image {
+    width: 90vw;
+    height: auto;
+    margin-bottom: 0.75rem;
+  }
+}
+
