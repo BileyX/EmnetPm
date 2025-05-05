@@ -1933,28 +1933,41 @@ a {
 }
 
 
-
 /* ====== PROPERTY GALLERY ====== */
 
 /* wrapper for primary image */
 .gallery-wrapper {
-  width: 70vw;
-  height: 70vh;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  max-width: 1200px; /* Maximum size limit */
+  width: 90%; /* More responsive width */
+  height: 60vh; /* Reduced from 70vh */
   margin: 0 auto;
   overflow: hidden;
 }
 
-/* primary image styling */
 .primary-image {
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  object-fit: contain;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  object-fit: cover; /* Changed from contain for better framing */
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.primary-image:hover {
-  transform: scale(1.05);
+.gallery-wrapper:hover .primary-image {
+  transform: scale(1.03);
+}
+
+/* Add overlay effect */
+.gallery-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 70%, rgba(0,0,0,0.4) 100%);
+  pointer-events: none;
 }
 
 /* toggle-container holds button + extras; default column layout */
@@ -1963,22 +1976,39 @@ a {
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
+  transition: all 0.3s ease;
 }
 
 /* button styling (black bg, gold text/border) */
 /* ===== MODIFIED TOGGLE BUTTON ===== */
 .toggle-button {
-  background-color: #FFD700;    /* gold background */
-  color: #000;                  /* black text */
-  border: none;                 /* remove border */
-  padding: 0.25rem 0.75rem;     /* smaller button */
-  font-size: 0.875rem;          /* slightly smaller text */
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  background: linear-gradient(to right, #FFD700, #ebca29);
+  color: #000;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
+
 .toggle-button:hover {
-  background-color: #ffde33;    /* a bit lighter on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Add chevron icon */
+.toggle-button::after {
+  content: '▼';
+  font-size: 0.8em;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate chevron when active */
+.toggle-button.showing::after {
+  transform: rotate(180deg);
 }
 
 /* ===== ALIGN BUTTON UNDER PRIMARY IMAGE ON LARGE SCREENS ===== */
@@ -1989,52 +2019,113 @@ a {
     margin: 0.5rem auto;
   }
   .toggle-button {
-    align-self: flex-end;       /* push to the right edge of that 70vw */
+    align-self: flex-end; /* push to the right edge of that 70vw */
   }
 }
 
-
 /* extras container: hidden by default, with fade transition */
 .extra-images {
-  display: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto; /* Changed from 2rem to 0 */
+  max-height: 0; /* New */
+  overflow: hidden; /* New */
+  padding: 0 1rem;
   opacity: 0;
-  margin-top: 1rem;
-  width: 90vw;
-  box-sizing: border-box;
-  transition: opacity 0.3s ease;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
 }
 
-/* when shown, flex-layout places items in a row */
+@media (max-width: 1200px) {
+  .extra-images {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* ===== FIX TOGGLE CONTAINER WIDTH CONSTRAINT ===== */
+@media (min-width: 641px) {
+  .toggle-container {
+    width: 100%; /* Was 30vw - this was causing the narrow container */
+    margin: 2rem auto; /* Increased spacing */
+  }
+  .toggle-button {
+    margin-bottom: 1.5rem; /* Add space between button and images */
+  }
+}
+
 .extra-images.show {
-  display: flex;
   opacity: 1;
-  justify-content: space-between;
-  align-items: flex-start;
+  transform: translateY(0);
+  max-height: 2000px; /* Arbitrary large value to accommodate content */
+  margin: 2rem auto; /* Restore margin only when visible */
 }
 
-/* each extra image */
 .extra-image {
-  width: 28vw;
-  height: 50vh;
   object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  animation: fadeInUp 0.4s ease forwards;
+  opacity: 0;
 }
+
+.extra-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add delay for each image */
+.extra-image:nth-child(1) { animation-delay: 0.1s }
+.extra-image:nth-child(2) { animation-delay: 0.2s }
+.extra-image:nth-child(3) { animation-delay: 0.3s }
+
 
 /* ====== RESPONSIVE ====== */
 /* small screens: stack extras vertically and reverse order so images sit between primary + button */
 @media (max-width: 640px) {
+  
+  .gallery-wrapper {
+    width: 90vw;
+    height: 50vh;
+  }
   .toggle-container {
     flex-direction: column-reverse;
+    gap: 0; /* Remove default gap between button and extras */
+  }
+  .toggle-button {
+    width: 70%;
+    justify-content: center;
   }
   .extra-images.show {
     flex-direction: column;
     width: 100%;
+    margin: 1rem auto !important; /* Reduced margin for mobile */
+    padding: 0 1rem;
   }
   .extra-image {
     width: 90vw;
-    height: auto;
+    height: 200px;
     margin-bottom: 0.75rem;
   }
-}
 
+  .extra-images {
+    margin: 0 !important; /* Override any residual margins */
+    padding: 0;
+  }
+}

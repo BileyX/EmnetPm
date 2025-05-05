@@ -253,6 +253,7 @@
             src="images/P.jpg"
             alt="Property main view"
             class="primary-image"
+            loading="lazy" decoding="async"
           />
         </div>
     
@@ -270,14 +271,15 @@
     
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        const btn    = document.getElementById('toggleButton');
-        const extras = document.getElementById('extraImages');
-    
-        btn.addEventListener('click', () => {
-          const showing = extras.classList.toggle('show');
-          btn.textContent = showing ? 'Show Less' : 'Show More';
-        });
-      });
+      const btn = document.getElementById('toggleButton');
+      const extras = document.getElementById('extraImages');
+
+      btn.addEventListener('click', () => {
+      const showing = extras.classList.toggle('show');
+      btn.classList.toggle('showing', showing); // Add class to button
+      btn.textContent = showing ? 'Show Less' : 'Show More';
+    });
+  });
     </script>
     
     
